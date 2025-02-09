@@ -156,5 +156,5 @@ def process_pdf(pdf_path, output_file):
 
 # Sample run
 pdf_path = "F:/Transmogrifier/Apps-LVCTransmogrifierUserGuide-v1.2.0.pdf"
-output_file = "structured_output_for_uml.txt"
+output_file = "OUTPUT EXAMPLES/structured_output_for_uml.txt"
 process_pdf(pdf_path, output_file)
