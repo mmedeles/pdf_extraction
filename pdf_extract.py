@@ -11,17 +11,14 @@ Relationships: Relationships between components (e.g., LVC Entity => Platform) a
 Formatted Output:
 
 The program writes the extracted and tagged information into a TXT file, which clearly identifies classes, attributes, methods, and relationships. This is ready to be used by the UML generation pipeline.
-
-
-Next Steps:
-Enhance NLP Processing: For more advanced semantic understanding, consider integrating an NLP library to better understand context and relationships within the text.
 """
+
 import fitz  # PyMuPDF
 import pdfplumber
 import re
 
-# Extract text from the PDF using PyMuPDF (fitz)
 def extract_text_using_pymupdf(pdf_path):
+    """Extract txt and other elements (fitz)"""
     doc = fitz.open(pdf_path)
     full_text = ""
 
@@ -31,8 +28,8 @@ def extract_text_using_pymupdf(pdf_path):
 
     return full_text
 
-# Extract tables using PDF Plumber
 def extract_tables_using_pdfplumber(pdf_path):
+    """Extract tables (plumber)"""
     with pdfplumber.open(pdf_path) as pdf:
         all_tables = []
         for page in pdf.pages:
@@ -42,8 +39,8 @@ def extract_tables_using_pdfplumber(pdf_path):
 
     return all_tables
 
-# Extract URLs from the document
 def extract_urls(pdf_path):
+    """Extract URLs"""
     doc = fitz.open(pdf_path)
     urls = []
     for page_num in range(len(doc)):
@@ -54,8 +51,8 @@ def extract_urls(pdf_path):
                 urls.append(link["uri"])
     return urls
 
-# Semantic tagging of the extracted content
 def semantic_tagging(text, tables):
+    """Semantic Tagging from the extracted content"""
     classes = []
     relationships = []
     methods = []
@@ -87,8 +84,8 @@ def semantic_tagging(text, tables):
         "relationships": relationships
     }
 
-# Write the output to a structured TXT file for UML diagram generation
 def write_output_to_txt(output_data, output_file):
+    """Write output to a TXT File"""
     with open(output_file, 'w') as file:
         # Write general text
         file.write("=== EXTRACTED TEXT ===\n")
@@ -130,8 +127,8 @@ def write_output_to_txt(output_data, output_file):
             file.write(f"Relationship: {relationship[0]} => {relationship[1]}\n")
         file.write("\n" + "="*40 + "\n")
 
-# Main function to process the PDF and output structured data for UML diagrams
 def process_pdf(pdf_path, output_file):
+    """process the PDF and output structured data for UML diagrams"""
     # Extract general text, tables, and URLs
     text = extract_text_using_pymupdf(pdf_path)
     tables = extract_tables_using_pdfplumber(pdf_path)
@@ -153,8 +150,3 @@ def process_pdf(pdf_path, output_file):
 
     # Write the structured output to a TXT file
     write_output_to_txt(output_data, output_file)
-
-# Sample run
-pdf_path = "F:/Transmogrifier/Apps-LVCTransmogrifierUserGuide-v1.2.0.pdf"
-output_file = "OUTPUT EXAMPLES/structured_output_for_uml.txt"
-process_pdf(pdf_path, output_file)

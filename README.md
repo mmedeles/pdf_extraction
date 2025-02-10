@@ -47,3 +47,9 @@ ATTRIBUTES: Identified attributes for UML.
 METHODS: Identified methods/functions.
 RELATIONSHIPS: Identified relationships between components.
 ```
+
+
+
+# To Do (Improve):
+1. Find a way to ignore the weird spacing in charts (e.g., emEndpoints = ${COMPUTERNAM E}:55100)
+2. 
