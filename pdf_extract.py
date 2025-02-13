@@ -11,6 +11,8 @@ Relationships: Relationships between components (e.g., LVC Entity => Platform) a
 Formatted Output:
 
 The program writes the extracted and tagged information into a TXT file, which clearly identifies classes, attributes, methods, and relationships. This is ready to be used by the UML generation pipeline.
+
+
 """
 
 import fitz  # PyMuPDF
@@ -148,5 +150,5 @@ def process_pdf(pdf_path, output_file):
         "relationships": tagged_data["relationships"]
     }
 
-    # Write the structured output to a TXT file
+    #Write the structured output to a TXT file
     write_output_to_txt(output_data, output_file)

@@ -33,7 +33,7 @@ pip install pdfplumber PyMuPDF
    ```bash
    python main.py
    ```
-4. Select the PDF to be extracted when propmpted
+4. Select the PDF to be extracted when prompted
 5. Save the Output file 
    
 ```
@@ -48,8 +48,11 @@ METHODS: Identified methods/functions.
 RELATIONSHIPS: Identified relationships between components.
 ```
 
-
-
 # To Do (Improve):
 1. Find a way to ignore the weird spacing in charts (e.g., emEndpoints = ${COMPUTERNAM E}:55100)
-2. 
+2. Warning/Caution bubbles??
+   1. Identify
+   2. Format?
+   3. Output
+   4. Semantic Analyzing??
+3. How should the output look like to be fed into the pipeline
