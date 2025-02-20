@@ -67,7 +67,7 @@ def semantic_tagging(text, tables):
     # Tag attributes (e.g., emEndpoints, listenEndpoints from the config tables)
     for table in tables:
         for row in table:
-            if len(row) >= 2 and row[0].isidentifier():  # Check if it's a valid attribute
+            if len(row) >= 2 and row[0] is not None and isinstance(row[0], str) and row[0].strip() and row[0].isidentifier():  # Check if it's a valid attribute
                 attributes.append({"name": row[0], "value": row[1]})
 
     # Detect methods or commands (e.g., start.bat, installation commands)
@@ -105,7 +105,9 @@ def write_output_to_txt(output_data, output_file):
         for table in output_data["tables"]:
             file.write("Table:\n")
             for row in table:
-                file.write(", ".join(row) + "\n")
+                # Convert all cells to string, replacing None with an empty string
+                row_str = ", ".join([str(cell) if cell is not None else "" for cell in row])
+                file.write(row_str + "\n")
             file.write("\n" + "="*40 + "\n")
 
         # Write semantic analysis: Classes, Attributes, Methods, and Relationships
