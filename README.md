@@ -49,7 +49,11 @@ RELATIONSHIPS: Identified relationships between components.
 ```
 
 # To Do (Improve):
-1. Find a way to ignore the weird spacing in charts (e.g., emEndpoints = ${COMPUTERNAM E}:55100)
+1. Clean text extract inconsistencies
+   1. Adobe Pro
+   2. Word
+   3. Standard Text Editor
+      1. Pre-process to the extraction
 2. Warning/Caution bubbles??
    1. Identify
    2. Format?
